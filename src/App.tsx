@@ -1,14 +1,20 @@
 
+import { Outlet } from 'react-router'
 import './App.css'
-import { Button } from './components/ui/button'
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
 
 function App() {
 
 
   return (
-    <>
-      <Button className='bg-green-500'>Hello World</Button>
-    </>
+    <div>
+
+      <Navbar />
+      <Outlet />
+      <Footer />
+
+    </div>
   )
 }
 

@@ -10,7 +10,10 @@ function App() {
     <div>
 
       <Navbar />
-      <Outlet />
+      <div className="min-h-[calc(100vh-180px)] container mx-auto px-5">
+        <Outlet />
+      </div>
+
       <Footer />
 
     </div>

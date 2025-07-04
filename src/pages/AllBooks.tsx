@@ -3,6 +3,7 @@ import { useDeleteBookMutation, useGetBooksQuery } from '@/redux/features/books/
 import { useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import BorrowModal from '@/redux/features/books/BorrowModal';
 
 export default function AllBooks() {
     const navigate = useNavigate()
@@ -14,7 +15,7 @@ export default function AllBooks() {
         refetchOnMountOrArgChange: true
     });
 
-    if (isLoading) return <LoadingSpinner/>;
+    if (isLoading) return <LoadingSpinner />;
 
 
     const handleDelete = async (id: string) => {
@@ -89,7 +90,7 @@ export default function AllBooks() {
                                                 title="Borrow"
                                                 className="p-2 rounded-full bg-green-100 text-green-600 hover:bg-green-200 transition"
                                             >
-                                                📚
+                                                <BorrowModal book={book} />
                                             </Button>
                                         </div>
                                     </td>
@@ -105,7 +106,7 @@ export default function AllBooks() {
             <div className="mt-10 text-center">
                 <Button
                     onClick={() => navigate("/create-book")}
-                    className="bg-purple-600 hover:bg-purple-700 text-white font-semibold  rounded-lg shadow-md transition-all duration-200 transform hover:scale-105"
+                    className="bg-green-600 text-white hover:bg-green-700 font-semibold  rounded-lg shadow-md transition-all duration-200 transform hover:scale-105"
                 >
                     Add New Book
                 </Button>

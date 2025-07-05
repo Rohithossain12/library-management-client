@@ -26,6 +26,7 @@ export default function BorrowModal({ book }: Props) {
   const navigate = useNavigate();
   const [borrowBook] = useBorrowBookMutation();
 
+  const [open, setOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [dueDate, setDueDate] = useState("");
 
@@ -47,6 +48,7 @@ export default function BorrowModal({ book }: Props) {
       }).unwrap();
 
       toast.success(res.message || "Book borrowed successfully");
+      setOpen(false);
       navigate("/borrow-summary");
     } catch (err) {
       const error = err as SerializedError & { data?: { message?: string } };
@@ -54,8 +56,16 @@ export default function BorrowModal({ book }: Props) {
     }
   };
 
+ 
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let val = Number(e.target.value);
+    if (val < 1) val = 1;
+    else if (val > book.copies) val = book.copies;
+    setQuantity(val);
+  };
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           title="Borrow"
@@ -80,7 +90,7 @@ export default function BorrowModal({ book }: Props) {
               value={quantity}
               min={1}
               max={book.copies}
-              onChange={(e) => setQuantity(Number(e.target.value))}
+              onChange={handleQuantityChange}
             />
             <p className="text-xs text-muted-foreground">
               {book.copies} {book.copies === 1 ? "copy" : "copies"} available

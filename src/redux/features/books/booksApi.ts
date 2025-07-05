@@ -1,17 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { IBook } from './bookTypes';
 
-
 export interface IApiResponse<T> {
     success: boolean;
     message: string;
     data: T;
 }
 
-
 export const booksApi = createApi({
     reducerPath: 'booksApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/books' }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'https://library-management-pi-kohl.vercel.app/api/books',
+    }),
     tagTypes: ['books'],
     endpoints: (builder) => ({
         getBooks: builder.query<IBook[], void>({
@@ -58,6 +58,3 @@ export const {
     useUpdateBookMutation,
     useDeleteBookMutation,
 } = booksApi;
-
-
-

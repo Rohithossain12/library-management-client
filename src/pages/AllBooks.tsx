@@ -103,7 +103,7 @@ export default function AllBooks() {
                 <p className="text-center text-gray-500 text-lg mt-10">No books found.</p>
             )}
 
-            <div className="mt-10 text-center">
+            <div className="mt-6 text-center">
                 <Button
                     onClick={() => navigate("/create-book")}
                     className="bg-green-600 text-white hover:bg-green-700 font-semibold  rounded-lg shadow-md transition-all duration-200 transform hover:scale-105"

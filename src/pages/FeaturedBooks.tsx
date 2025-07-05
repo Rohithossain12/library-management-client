@@ -30,17 +30,22 @@ export default function FeaturedBooks() {
                 {featuredBooks?.map((book, idx) => (
                     <div
                         key={book._id}
-
                         onClick={() => navigate(`/books/${book._id}`)}
                         className={`rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-gray-800 cursor-pointer flex flex-col justify-between ${cardColors[idx % cardColors.length]}`}
                     >
                         <div className="text-4xl mb-4">📖</div>
-                        <h3 className="text-xl font-bold mb-2">
-                            {book.title}
-                        </h3>
-                        <p className="text-sm text-gray-700">
-                            by {book.author}
-                        </p>
+                     
+                        <div className="mb-2 h-14"> 
+                            <h3 className="font-semibold line-clamp-2">
+                                {book.title}
+                            </h3>
+                        </div>
+                       
+                        <div className="h-5"> 
+                            <p className="text-sm text-gray-700 line-clamp-1"> 
+                                by {book.author}
+                            </p>
+                        </div>
                         <p className="text-xs mt-3 inline-block bg-white/60 px-3 py-1 rounded-full text-gray-600">
                             {book.genre}
                         </p>

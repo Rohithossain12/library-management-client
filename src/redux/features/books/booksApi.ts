@@ -32,11 +32,11 @@ export const booksApi = createApi({
             invalidatesTags: ['books'],
             transformResponse: (response: IApiResponse<IBook>) => response.data,
         }),
-        updateBook: builder.mutation<IBook, { id: string; rest: Partial<IBook> }>({
-            query: ({ id, ...rest }) => ({
+        updateBook: builder.mutation<IBook, Partial<IBook> & { id: string }>({
+            query: ({ id, ...patch }) => ({
                 url: `/${id}`,
                 method: 'PUT',
-                body: rest,
+                body: patch,
             }),
             invalidatesTags: ['books'],
             transformResponse: (response: IApiResponse<IBook>) => response.data,

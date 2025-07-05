@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import BorrowModal from '@/redux/features/books/BorrowModal';
+import EditBookModal from '@/redux/features/books/EditBookModal';
 
 export default function AllBooks() {
     const navigate = useNavigate()
@@ -77,7 +78,8 @@ export default function AllBooks() {
                                                 title="Edit"
                                                 className="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition"
                                             >
-                                                ✏️
+                                                
+                                                <EditBookModal book={book} />
                                             </button>
                                             <Button
                                                 onClick={() => handleDelete(book._id)}

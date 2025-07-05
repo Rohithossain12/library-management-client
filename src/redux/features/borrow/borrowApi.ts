@@ -9,14 +9,14 @@ export const borrowApi = createApi({
   endpoints: (builder) => ({
     borrowBook: builder.mutation<{ success: boolean; message: string; data: IBorrow }, IBorrow>({
       query: (payload) => ({
-        url: '/',
+        url: '',
         method: 'POST',
         body: payload,
       }),
       invalidatesTags: ['borrow'],
     }),
     getSummary: builder.query<{ success: boolean; message: string; data: IBorrowSummary[] }, void>({
-      query: () => '/',
+      query: () => '',
       providesTags: ['borrow'],
     }),
   }),

@@ -15,7 +15,7 @@ export const booksApi = createApi({
     tagTypes: ['books'],
     endpoints: (builder) => ({
         getBooks: builder.query<IBook[], void>({
-            query: () => '/',
+            query: () => '',
             providesTags: ['books'],
             transformResponse: (response: IApiResponse<IBook[]>) => response.data,
         }),
@@ -25,7 +25,7 @@ export const booksApi = createApi({
         }),
         addBook: builder.mutation<IBook, Partial<IBook>>({
             query: (book) => ({
-                url: '/',
+                url: '',
                 method: 'POST',
                 body: book,
             }),

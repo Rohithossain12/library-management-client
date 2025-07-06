@@ -11,11 +11,11 @@ export interface IApiResponse<T> {
 
 export const booksApi = createApi({
     reducerPath: 'booksApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://library-management-pi-kohl.vercel.app/api/books' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://library-management-app-smoky.vercel.app/api/books' }),
     tagTypes: ['books'],
     endpoints: (builder) => ({
         getBooks: builder.query<IBook[], void>({
-            query: () => '',
+            query: () => '/',
             providesTags: ['books'],
             transformResponse: (response: IApiResponse<IBook[]>) => response.data,
         }),
@@ -25,7 +25,7 @@ export const booksApi = createApi({
         }),
         addBook: builder.mutation<IBook, Partial<IBook>>({
             query: (book) => ({
-                url: '',
+                url: '/',
                 method: 'POST',
                 body: book,
             }),

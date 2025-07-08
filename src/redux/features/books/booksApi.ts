@@ -11,7 +11,7 @@ export interface IApiResponse<T> {
 
 export const booksApi = createApi({
     reducerPath: 'booksApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://library-management-app-smoky.vercel.app/api/books' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://library-management-pi-kohl.vercel.app/api/books' }),
     tagTypes: ['books'],
     endpoints: (builder) => ({
         getBooks: builder.query<IBook[], void>({
